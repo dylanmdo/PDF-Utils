@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pdfutils.controller.MainAppController">
+   <center>
+       <TabPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f5f6fa;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+           <Tab text="Split / Merge">
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #f5f6fa;">
+                   <HBox alignment="CENTER" layoutX="276.0" layoutY="134.0" prefHeight="226.0" prefWidth="475.0" spacing="50.0">
+                       <Pane prefHeight="225.0" prefWidth="200.0">
+                           <HBox.margin>
+                               <Insets right="20.0" />
+                           </HBox.margin>
+                           <ImageView fitHeight="98.0" fitWidth="126.0" layoutX="51.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                               <image>
+                                   <Image url="@image/papier.png" />
+                               </image>
+                           </ImageView>
+                           <Button contentDisplay="CENTER" layoutX="51.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleMainSplit" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #f03b43; -fx-text-fill: #fff; -fx-font-weight: bold;" text="Commencer">
+                        <cursor>
+                           <Cursor fx:constant="HAND" />
+                        </cursor></Button>
+                           <Label layoutX="87.0" layoutY="113.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Split" />
+                           <Label layoutX="43.0" layoutY="140.0" text="Séparer vos fichiers PDF" />
+                       </Pane>
+                       <Pane prefHeight="225.0" prefWidth="200.0">
+                           <children>
+                               <ImageView fitHeight="98.0" fitWidth="126.0" layoutX="51.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                                   <image>
+                                       <Image url="@image/papier.png" />
+                                   </image>
+                               </ImageView>
+                               <Button layoutX="48.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleMainMerge" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #f03b43; -fx-text-fill: #fff; -fx-font-weight: bold;" text="Commencer">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                               <Label layoutX="78.0" layoutY="113.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Merge" />
+                               <Label layoutX="42.0" layoutY="140.0" text="Fusionner vos fichiers PDF" />
+                           </children>
+                       </Pane>
+                   </HBox>
+                   <Label layoutX="407.0" layoutY="37.0" style="-fx-font-size: 32; -fx-text-fill: #969ea6;" text="Choisir un outil" textAlignment="CENTER" />
+               </AnchorPane>
+           </Tab>
+       </TabPane>
+   </center>
+</BorderPane>

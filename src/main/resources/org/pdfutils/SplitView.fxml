@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #f5f6fa;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.pdfutils.controller.SplitAppController">
+   <children>
+      <Pane layoutX="54.0" layoutY="213.0" onDragDropped="#handleDragDropped" onDragOver="#handleDragOver" onMouseClicked="#handleSliptSelectFile" prefHeight="200.0" prefWidth="374.0" style="-fx-background-color: #425afc;">
+         <children>
+            <ImageView fitHeight="62.0" fitWidth="62.0" layoutX="156.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/pdf.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="131.0" layoutY="140.0" style="-fx-text-fill: #fff;" text="Sélectionner PDF">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+      <Pane layoutX="595.0" layoutY="187.0" prefHeight="226.0" prefWidth="374.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="22.0" layoutY="14.0" onMouseClicked="#handleSliptSelectFile" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/pdf_file.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label fx:id="FileSelectedSplit" layoutX="97.0" layoutY="32.0" onKeyPressed="#handleSliptSelectFile" onMouseClicked="#handleSliptSelectFile" prefHeight="21.0" prefWidth="177.0" text="Aucun fichier sélectionné">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Button layoutX="22.0" layoutY="188.0" mnemonicParsing="false" onAction="#handleSaveSplit" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #f03b43; -fx-text-fill: #fff; -fx-font-weight: bold;" text="Enregistrer">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Label fx:id="FileSelectedSplit1" contentDisplay="CENTER" layoutX="93.0" layoutY="86.0" onKeyPressed="#handleSliptSelectFile" onMouseClicked="#handleSliptSelectFile" prefHeight="21.0" prefWidth="23.0" text="De">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="FileSelectedSplit11" contentDisplay="CENTER" layoutX="93.0" layoutY="128.0" onKeyPressed="#handleSliptSelectFile" onMouseClicked="#handleSliptSelectFile" prefHeight="21.0" prefWidth="17.0" text="À">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="startPageField" layoutX="123.0" layoutY="85.0" prefHeight="25.0" prefWidth="50.0" />
+            <TextField fx:id="endPageField" layoutX="123.0" layoutY="127.0" prefHeight="25.0" prefWidth="50.0" />
+            <ImageView fitHeight="50.0" fitWidth="62.0" layoutX="22.0" layoutY="97.0" onMouseClicked="#handleSliptSelectFile" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/pdf_range.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </Pane>
+      <ImageView fitHeight="50.0" fitWidth="62.0" layoutX="54.0" layoutY="28.0" onMouseClicked="#returnBtnMain" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/previous.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="331.0" layoutY="52.0" style="-fx-font-size: 32; -fx-text-fill: #969ea6;" text="Séparer vos fichiers PDF" textAlignment="CENTER" />
+   </children>
+</AnchorPane>
