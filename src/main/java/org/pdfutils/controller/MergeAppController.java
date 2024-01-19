@@ -231,11 +231,11 @@ public class MergeAppController {
             String FirstFileName = selectedFiles.get(0).getName();
             if (FirstFileName.contains(".")) {
                 FirstFileName = FirstFileName.substring(0, FirstFileName.lastIndexOf("."));
-                pdfMergerUtility.setDestinationFileName(selectedDirectory + "\\" + FirstFileName + "_merged.pdf");
+                pdfMergerUtility.setDestinationFileName(selectedDirectory + File.separator + FirstFileName + "_merged.pdf");
             }
 
         } else {
-            pdfMergerUtility.setDestinationFileName(selectedDirectory + "\\" + fileName + "_merged.pdf");
+            pdfMergerUtility.setDestinationFileName(selectedDirectory + File.separator + fileName + "_merged.pdf");
         }
 
         for (File file : selectedFiles) {

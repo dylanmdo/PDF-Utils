@@ -77,65 +77,59 @@ public class SplitAppController {
 
     // Méthode pour séparer les pdf 1 à 1
     public void documentSplit(File selectedFile, File selectedDirectory) throws IOException {
+        try (PDDocument document = PDDocument.load(selectedFile)) {
+            Splitter splitter = new Splitter();
+            List<PDDocument> splitPages = splitter.split(document);
 
-        PDDocument document = PDDocument.load(selectedFile);
-        Splitter splitter = new Splitter();
+            int i = 1;
 
-        List<PDDocument> splitPages = splitter.split(document);
+            for (PDDocument docpdf : splitPages) {
 
-        int i = 1;
+                String fileName = selectedFile.getName();
+                System.out.println(selectedDirectory.getAbsolutePath());
 
-        for (PDDocument docpdf : splitPages) {
+                if (!fileName.contains(".")) {
+                    docpdf.save(selectedDirectory.getAbsolutePath() + File.separator  + fileName + "_page" + i + ".pdf");
+                } else {
+                    fileName = fileName.substring(0, fileName.lastIndexOf("."));
+                    docpdf.save(selectedDirectory.getAbsolutePath() + File.separator + fileName + "_page" + i + ".pdf");
+                }
 
-            String fileName = selectedFile.getName();
-
-            if (!fileName.contains(".")) {
-                docpdf.save(selectedDirectory + "\\" + fileName + "_page" + i + ".pdf");
-
-            } else {
-                fileName = fileName.substring(0, fileName.lastIndexOf("."));
-                docpdf.save(selectedDirectory + "\\" + fileName + "_page" + i + ".pdf");
+                i++;
             }
-
-            i++;
-
-            docpdf.close();
         }
+
+
 
     }
 
     // Méthode pour séparer les pdf par interval
     public void documentSplitRange(File selectedFile, File selectedDirectory) throws IOException {
-
         PDDocument document = PDDocument.load(selectedFile);
 
         int splitStartPage = Integer.parseInt(startPageField.getText());
         int splitEndPage = Integer.parseInt(endPageField.getText());
 
-
         Splitter splitter = new Splitter();
         splitter.setStartPage(splitStartPage);
         splitter.setEndPage(splitEndPage);
-
 
         List<PDDocument> splitPages = splitter.split(document);
 
         PDDocument newDocument = new PDDocument();
 
-
         for (PDDocument mydoc : splitPages) {
             newDocument.addPage(mydoc.getPage(0));
-
         }
 
         String fileName = selectedFile.getName();
 
         if (fileName.contains(".")) {
             fileName = fileName.substring(0, fileName.lastIndexOf("."));
-
         }
-        System.out.println(selectedDirectory + "\\" + fileName + "_page" + splitStartPage + "à" + splitEndPage + ".pdf");
-        newDocument.save(selectedDirectory + "\\" + fileName + "_page" + splitStartPage + "à" + splitEndPage + ".pdf");
+
+        System.out.println(selectedDirectory + File.separator + fileName + "_page" + splitStartPage + "à" + splitEndPage + ".pdf");
+        newDocument.save(selectedDirectory + File.separator + fileName + "_page" + splitStartPage + "à" + splitEndPage + ".pdf");
         newDocument.close();
     }
 
@@ -144,7 +138,7 @@ public class SplitAppController {
     private void directoryChooserAndSplit(File selectedFile) throws IOException {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setInitialDirectory(selectedFile.getParentFile());
-        File selectedDirectory = directoryChooser.showDialog(null);
+        File selectedDirectory = directoryChooser.showDialog(startPageField.getScene().getWindow());
 
 
 
