@@ -89,7 +89,7 @@ public class SplitAppController {
                 System.out.println(selectedDirectory.getAbsolutePath());
 
                 if (!fileName.contains(".")) {
-                    docpdf.save(selectedDirectory.getAbsolutePath() + File.separator  + fileName + "_page" + i + ".pdf");
+                    docpdf.save(selectedDirectory.getAbsolutePath() + "/" + fileName + "_page" + i + ".pdf");
                 } else {
                     fileName = fileName.substring(0, fileName.lastIndexOf("."));
                     docpdf.save(selectedDirectory.getAbsolutePath() + File.separator + fileName + "_page" + i + ".pdf");
